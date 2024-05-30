@@ -1,19 +1,14 @@
 import './App.css';
-import SearchBar from './components/searchBar/searchBar';
+import NavBar from './components/navBar/navBar';
 
 
 
 function App() {
   return (
     <div className="app">
-      <div className="search-bar-container">
-        <SearchBar/>
+      <div className="nav-bar-container">
+        <NavBar/>
       </div>
-      {/*Create Search Results container*/}
-      <div>
-        Search Results
-      </div>
-      <h2>Hello World!</h2>
     </div>
   );
 }

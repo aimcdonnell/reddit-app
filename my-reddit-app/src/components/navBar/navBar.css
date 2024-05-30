@@ -1,0 +1,10 @@
+.nav-bar {
+    color: rgb(58, 57, 57);
+    background-color: rgb(252, 252, 252);
+    box-shadow: 0 0 .1rem .1rem rgb(211, 211, 211);
+    font-family: 'Reddit Mono';
+    font-style: normal;
+    font-weight: 200;
+    padding: 1.5rem;
+    text-align: center;
+}
