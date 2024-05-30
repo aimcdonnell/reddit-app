@@ -11,6 +11,7 @@ const SearchBar = () => {
     //this asynchronous function allows us to fetch data from an external API
     //response waits for the results of the fetchData function and performs actions on it
     //converting response into JSON format so that it can be read by JavaScript
+    //WORK ON .VALUE ERROR BELOW
     const runSearch = async() => {
         const searchInput = document.getElementById("search-input").value;
         const searchUrl = "https://www.reddit.com/r/" + searchInput + "/hot/.json?limit=10";
@@ -27,19 +28,16 @@ const SearchBar = () => {
             <FaSearch id="search-icon"/>
         <input
             type="search"
-            placeholder="Search for a subreddit here..."
-            //whenever the user changes the value inside
-            //the input box, set the value of the input variable
-            //to the value inside e.target.value
+            placeholder="Search for a subreddit..."
             onChange={runSearch}
             />
             <div>
                 {
                     retrievedData.map((children, index) => {
                         return (
-                                <div ley={children.data.author + index}>
+                                <div key={ children.data.author + index }>
                                     <div>Kind: { children.kind } </div>
-                                    <div>Author: { children.data.author }</div>
+                                    <div>Author: { children.data.author_fullname }</div>
                                     <div>Title: { children.data.title }</div>
                                 </div>
                         )
