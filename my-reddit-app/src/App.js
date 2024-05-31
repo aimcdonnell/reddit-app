@@ -1,5 +1,6 @@
 import './App.css';
 import NavBar from './components/navBar/navBar';
+import Post from './components/post/post';
 
 
 
@@ -8,6 +9,7 @@ function App() {
     <div className="app">
       <div className="nav-bar-container">
         <NavBar/>
+        <Post/>
       </div>
     </div>
   );
