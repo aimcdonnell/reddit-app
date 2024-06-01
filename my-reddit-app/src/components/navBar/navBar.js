@@ -1,5 +1,5 @@
 import React from 'react';
-import "./navBar.css";
+import "./NavBar.css";
 
 //Add Reddit logo to NavBar
 const NavBar = () => {

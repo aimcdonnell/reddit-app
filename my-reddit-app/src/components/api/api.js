@@ -1,24 +1,18 @@
 export const apiUrl = "https://www.reddit.com/";
-export const subreddit = `${apiUrl}/hot.json`;
+export const subreddit = `${apiUrl}/hot.json?limit=10`;
 
 
-export const getSubredditPosts = (subreddit) => {
+export const getSubredditPosts = async () => {
+    const response = await fetch(`${apiUrl}${subreddit}`);
+    const json = await response.json();
 
-    fetch(subreddit)
-//treating the response as if it were JSON by converting it
-//into a JavaScript data structure
-    .then(response => {
-        if (!response.ok) {
-            throw new Error ('Failed to fetch data from URL');
-        }
-        return response.json();
-    })
-    //use the data we get from the API
-    .then(data => {
-        console.log(data);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+return json.data.children.map(post => post.data);
 
 };
+
+export const getSubredditPostComments = async() => {
+    const response = await fetch(`${apiUrl}${subreddit}`);
+    const json = await response.json();
+
+return json[1].data.children.map(comment => comment.data);
+}
