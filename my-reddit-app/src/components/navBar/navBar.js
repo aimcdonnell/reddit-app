@@ -7,6 +7,7 @@ const NavBar = () => {
     return(
         <div className="nav-bar">
             <h2 id="nav-title">Seddit</h2>
+            {/*<input type="text" className="input" value="hot"/>*/}
         </div>
     )
 }
