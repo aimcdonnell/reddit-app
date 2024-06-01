@@ -1,7 +1,9 @@
 import React from "react";
-import "./post.css";
+import "./card.css";
+//import apiUrl from "../api/api";
 
-const Post = () => {
+const Card = () => {
+
     return (
         <div className="reddit-post">
             <h2>Title</h2>
@@ -11,4 +13,4 @@ const Post = () => {
     )
 }
 
-export default Post;
+export default Card;
