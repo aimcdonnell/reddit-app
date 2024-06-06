@@ -34,7 +34,6 @@ function App() {
     <div className="app">
       <header>
         <div className="nav-bar-container">
-          <input type="text" className="input" value="popular"/>
           <NavBar/> 
         </div>
       </header>

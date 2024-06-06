@@ -2,12 +2,16 @@ import "./Card.css";
 
 //pass through props to get our titles
 const Card = (props) => {
-
+        
     return (
             <article className="reddit-post">
-                <a href={ "https://reddit.com" + props.article.permalink }>
-                    <h3>Title</h3>
-                </a>
+                {/*Accessing title and image of post */}
+                    <h3>{props.article.title}</h3>
+                    <div className="image">
+                    {props.article.preview ? <img src={props.article.preview.images[0].source.url}/> : null}
+                    </div>
+                    
+
             </article>
     )
 }
