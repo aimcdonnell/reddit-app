@@ -3,15 +3,13 @@ import "./Card.css";
 //pass through props to get our titles
 const Card = (props) => {
 
-    /*return (
-        <div className="reddit-post">
-            <article className="posts">
-                <a href={"https://www.reddit.com/hot.json" + props.post.permalink}>
-                <h2>Title</h2>
+    return (
+            <article className="reddit-post">
+                <a href={ "https://reddit.com" + props.article.permalink }>
+                    <h3>Title</h3>
                 </a>
             </article>
-        </div>
-    )*/
+    )
 }
 
 export default Card;

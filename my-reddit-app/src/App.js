@@ -5,12 +5,13 @@ import Card from './components/Card/Card';
 
 function App() {
   //default values of useState() hooks are an array and hot
-  const [posts, setPosts] = useState([]);
-  const [subreddit, setSubreddit] = useState("hot");
+  //useState is an empty array
+  const [articles, setArticles] = useState([]);
+  const [subreddit, setSubreddit] = useState("popular");
 
   //every time subreddit changes, useEffect() will recall
   useEffect(() => {
-      fetch("https://www.reddit.com/hot.json?limit=10").then(response => {
+      fetch("https://www.reddit.com/r/popular.json?limit=10").then(response => {
           if (response.status !== 200) {
               console.log("Error!")
               //return out of the function
@@ -20,27 +21,29 @@ function App() {
           //this returns a promise so we have to call .then()
           response.json().then(data => {
               if (data !== null) {
-                  //setting posts equal to the array of children
-                 setPosts(data.data.children);
-                 console.log(data.data.children);
+                  //setting articles equal to the array of children
+                 setArticles(data.data.children);
+                 //console.log(data.data.children);
               }
           });
       })
+      //every time, subreddit changes, the useEffect() hook will recall
   }, [subreddit]);
   
   return (
     <div className="app">
       <header>
         <div className="nav-bar-container">
+          <input type="text" className="input" value="popular"/>
           <NavBar/> 
         </div>
       </header>
-      <div className="posts">
-      {/*Looping through the articles: if posts is not equal null, map through the posts array and get the post
-      and index of the post. We then get the post which has a key of index. 
-      Then we pass through the data of each post as a prop*/}
+      <div className="articles">
+      {/*Looping through the articles: if articles is not equal null, map through the articles array and get the article
+      and index of the article. We then get the article which has a key of index. 
+      Then we pass through the data of each article as a prop*/}
           {
-            (posts !== null) ? posts.map((post, index) => <Card key={index} post={post.data}/>) : ''
+            (articles !== null) ? articles.map((article, index) => <Card key={index} article={article.data}/>) : ''
           }
           
       </div>
