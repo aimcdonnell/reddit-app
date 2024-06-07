@@ -9,9 +9,10 @@ const Card = (props) => {
                 {/*Accessing title and image of post */}
                     <h3>{props.article.title}</h3>
                     <div className="image">
-                    {props.article.preview ? <img src={props.article.url}/> : <img src={props.article.url_overridden_by_dest} />}
+                    {props.article.preview ? <img src={props.article.url}/> : null}
+                    {props.article.preview  ? <a href={props.article.permalink}>Read more</a> : null}
                     {props.article ? <p>{props.article.selftext}</p> : null}
-                    <video>{props.article.secure_media.reddit_video.fallback_url}</video>
+                    {/*{props.article.secure_media ? <video>{props.article.secure_media.reddit_video.fallback_url}</video> : null}*/}
                     </div>
                     
 
