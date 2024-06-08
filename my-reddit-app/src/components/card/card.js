@@ -7,7 +7,7 @@ const Card = (props) => {
     return (
             <article className="reddit-post">
                 {/*Accessing title and image of post */}
-                <div>
+                <div id="post-title">
                     <h3>{ props.article.title }</h3>
                 </div>
 
@@ -23,7 +23,7 @@ const Card = (props) => {
                         <source src={props.article.url} />
                         <p>
                           Your browser doesn't support this video. Here is a
-                          <a href={props.article.secure_media.reddit_video.fallback_url}>link to the video</a> instead.
+                          <a href={props.article.url}>link to the video</a> instead.
                         </p>
                       </video> : null }
                     </div>
