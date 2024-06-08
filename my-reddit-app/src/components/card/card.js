@@ -20,10 +20,10 @@ const Card = (props) => {
                 {/*Accessing Reddit videos - offering alternative URL if the browser cannot load video*/}
                     { props.article.secure_media ? 
                         <video width="750" height="500" controls>
-                        <source src={props.article.url} />
+                        <source src={props.article.secure_media.reddit_video.fallback_url} />
                         <p>
                           Your browser doesn't support this video. Here is a
-                          <a href={props.article.url}>link to the video</a> instead.
+                          <a href={props.article.secure_media.reddit_video.fallback_url}>link to the video</a> instead.
                         </p>
                       </video> : null }
                     </div>
