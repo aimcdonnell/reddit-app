@@ -3,7 +3,6 @@ import "./Card.css";
 //pass through props to get our titles
 const Card = (props) => {
 
-    //add alt text property to image tags
     return (
             <article className="reddit-post">
                 {/*Accessing title and image of post */}

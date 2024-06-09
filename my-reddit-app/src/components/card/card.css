@@ -1,21 +1,33 @@
 .reddit-post {
-    padding: 2rem 2rem 6rem 6rem;
+    padding: 2rem 6rem;
     margin: 0 auto;
     width: 50%;
+    height: 50%;
     box-shadow: .125rem .15rem .125rem .15rem rgb(189, 188, 188);
+    font-family: "Reddit Sans", sans-serif;
 }
 
-#post-title {
-    padding: 2rem 0rem;
-
+#post-title h3 {
+    padding: 2rem;
+    text-align: center;
+    font-style: normal;
+    font-weight: 600;
+    color: rgb(8, 8, 8)
 }
 
 #post-image {
-    height: auto;
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    max-width: 100%;
 }
 
 img {
-    height: auto;
-    width: 50%;
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 1rem;
+}
+
+#post-text {
+    font-weight: 200;
 }
