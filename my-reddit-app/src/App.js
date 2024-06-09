@@ -3,14 +3,15 @@ import { useState, useEffect } from 'react';
 import NavBar from './components/NavBar/NavBar';
 import Card from './components/Card/Card';
 
-function App() {
+const App = () => {
   //default values of useState() hooks are an array and hot
   //useState is an empty array
-  const [articles, setArticles] = useState([]);
-  const [subreddit, setSubreddit] = useState("popular");
+const [articles, setArticles] = useState([]);
 
   //every time subreddit changes, useEffect() will recall
+  //running the async function after the page has loaded using the useEffect() hook
   useEffect(() => {
+    const subreddit = e => e.target.value;
       fetch("https://www.reddit.com/r/popular.json?limit=10").then(response => {
           if (response.status !== 200) {
               console.log("Error!")
