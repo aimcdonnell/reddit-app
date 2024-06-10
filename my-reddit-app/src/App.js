@@ -8,11 +8,11 @@ const App = () => {
   //useState is an empty array
 const [articles, setArticles] = useState([]);
 
+
   //every time subreddit changes, useEffect() will recall
   //running the async function after the page has loaded using the useEffect() hook
   useEffect(() => {
-    const subreddit = e => e.target.value;
-      fetch("https://www.reddit.com/r/popular.json?limit=10").then(response => {
+      fetch("https://www.reddit.com/r/pics.json?limit=10").then(response => {
           if (response.status !== 200) {
               console.log("Error!")
               //return out of the function
@@ -29,13 +29,13 @@ const [articles, setArticles] = useState([]);
           });
       })
       //every time, subreddit changes, the useEffect() hook will recall
-  }, [subreddit]);
+  }, []);
   
   return (
     <div className="app">
       <header>
         <div className="nav-bar-container">
-          <NavBar/> 
+          <NavBar/>
         </div>
       </header>
       <div className="articles">
