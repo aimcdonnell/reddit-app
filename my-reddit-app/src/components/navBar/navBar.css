@@ -5,24 +5,49 @@
     font-style: normal;
     font-weight: 200;
     padding: 1.5rem;
-    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+#reddit-icon {
+    font-size: 50px;
+    color: rgb(171, 25, 190);
+    margin: 0rem .5rem;
 }
 
 #nav-title {
     color: rgb(58, 57, 57);
 }
 
-#input-bar {
+#input-wrapper {
     display: inline-block;
     color: rgb(173, 172, 172);
+    margin: 0rem 1rem;
+
 }
 
-#input-bar::before {
-    content: "Search: /r/";
-    display: inline-block;
+
+#input-wrapper input {
+    border-radius: 1rem;
 }
 
-#input-bar input {
-    color: rgb(173, 172, 172);
+#search-icon {
+    color: rgb(107, 149, 204)
+}
+
+#search-bar {
+    height: 1.5rem;
+    width: 15rem;
+    padding: .75rem;
+    background-color: rgb(243, 243, 243);
     border-style: none;
+
+}
+
+#search-bar:hover {
+    background-color: rgb(201, 199, 199);
+}
+
+#search-bar:focus {
+    outline: none;
 }
