@@ -1,18 +1,18 @@
-/*import { createSlice } from '@reduxjs/toolkit';
-import { getSubredditPosts, getSubredditPostComments } from '../components/api/api';
+/*import { createSlice } from "@reduxjs/toolkit";
+import { getSubredditPosts, getSubredditPostComments } from "../components/api/api";
 
 //slice is the feature of your application
 const initialState = {
     redditArticle: [],
-    searchTerm: '',
-    subreddit: 'r/pics/',
+    searchTerm: "",
+    subreddit: "r/pics/",
     isLoading: false,
     hasError: false,
 };
 
 //action.payload carries the data necessary to update the application state
 const redditArticleSlice = createSlice({
-    name: 'redditArticle',
+    name: "redditArticle",
     initialState,
     reducers: {
         setArticles(action) {
@@ -35,7 +35,7 @@ const redditArticleSlice = createSlice({
         },
         setSubreddit() {
             state.setSubreddit = action.payload;
-            state.searchTerm = '';
+            state.searchTerm = "";
         },
 
     }
