@@ -14,5 +14,5 @@
 
 ## Challenges faced
 
-- Connecting Reddit to the app - this was particularly tough as there were a range of different posts (some with a title and comments, some with a title and text, some with only a video, some with only images, some with images and text). This meant closely comparing different posts in the reddit JSON link (https://www.reddit.com/r/popular.json?limit=10) to find similar and different properties
-- Trying to get the sound to play on Reddit video posts - I was able to get the video to play but the audio would not
+- Connecting Reddit to the app - trying to work out how to map over the posts to display them in the app. Also trying to work out how to make the code work from the <Card/> component rather than in the <App/> component
+- Displaying all images in the app - some images (post.thumbnail images) were small and then became pixellated when enlarged, other images (post.url images)
