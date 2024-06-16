@@ -4,8 +4,9 @@ import React, { useState, useEffect } from "react";
 const Post = ({ post }) => (
     <div className="posts">
         <h2>{post.title}</h2>
-        <img src={post.thumbnail} alt={post.title}/>
-        <p></p>
+        {post.post_hint === "image" ? <img src={post.url} alt={post.title}/> : null}
+        { post.is_gallery === true ?  <img src={post.thumbnail} alt={post.title}/> : null }
+        {post.selftext ? <p>{post.selftext}</p> : null}
     </div>
   )
 
@@ -34,7 +35,7 @@ const Card = () => {
         response.json().then(data => {
             if (data !== null) {
                 //parsing through the Reddit data and setting articles to the array of children
-                setPosts(data.data.children.map(post => post.data));
+                setPosts(data.data.children.map((/** @type {{ data: any; }} */ post) => post.data));
             }
         });
     })
