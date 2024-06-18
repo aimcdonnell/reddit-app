@@ -1,8 +1,7 @@
-.reddit-post {
-    padding: 6rem 3rem;
+.posts {
+    padding: 3rem 3rem;
     margin: 0 auto;
-    width: 50%;
-    height: 50%;
+    width: 75%;
     box-shadow: .125rem .15rem .125rem .15rem rgb(189, 188, 188);
     font-family: "Reddit Sans", sans-serif;
 }
@@ -18,8 +17,8 @@
 #post-image {
     display: flex;
     justify-content: center;
-    max-width: 100%;
-    max-width: 100%;
+    width: 2;
+    height: 75%;
 }
 
 img {
@@ -30,8 +29,4 @@ img {
 
 #post-text {
     font-weight: 200;
-}
-
-#post-discover-more {
-    font-family: "Reddit Sans", sans-serif;
 }

@@ -1,12 +1,23 @@
 import "./Card.css";
 import React, { useState, useEffect } from "react";
 
+//Make all card boxes the same size using CSS
+//Work out why styling is no longer showing
 const Post = ({ post }) => (
     <div className="posts">
-        <h2>{post.title}</h2>
-        {post.post_hint === "image" ? <img src={post.url} alt={post.title}/> : null}
-        { post.is_gallery === true ?  <img src={post.thumbnail} alt={post.title}/> : null }
-        {post.selftext ? <p>{post.selftext}</p> : null}
+        <div id="post-title">
+        <h3>{post.title}</h3>
+        </div>
+        <div id="post-image">
+            { post.post_hint === "image" ? <img src={post.url} alt={post.title}/> : null }
+            { post.is_gallery === true ? <img src={post.thumbnail} alt={post.title}/> : null }
+        </div>
+        <div id="post-text">
+            { post.over_18 ? <p>Image has been blocked as it may be offensive or disturbing to some viewers: Click <a href={post.url}>here</a> to see image</p> : null }
+            { post.selftext ? <p>{post.selftext}</p> : null }
+        </div>
+
+        <p>Posted by: {post.author}</p>
     </div>
   )
 
