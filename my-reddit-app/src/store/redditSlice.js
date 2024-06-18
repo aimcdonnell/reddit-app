@@ -1,4 +1,4 @@
-/*import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { getSubredditPosts, getSubredditPostComments } from "../components/api/api";
 
 //slice is the feature of your application
@@ -44,4 +44,4 @@ const redditArticleSlice = createSlice({
 //Displaying the state of the application
 //console.log(articleSlice);
 
-export default redditArticleSlice.reducer;*/
+export default redditArticleSlice.reducer;

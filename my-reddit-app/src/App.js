@@ -5,11 +5,12 @@ import Card from "./components/Card/Card";
 
 const App = () => {
 
+
   return (
     <div className="app">
       <header>
         <div className="search-bar-container">
-          <NavBar />
+        <NavBar/>
         </div>
       </header>
       <div>
