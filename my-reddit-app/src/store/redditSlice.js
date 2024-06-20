@@ -15,26 +15,26 @@ const redditArticleSlice = createSlice({
     name: "redditArticle",
     initialState,
     reducers: {
-        setArticles(action) {
+        setArticles(state, action) {
             state.redditArticle = action.payload;
         },
         startGetArticles(state) {
             state.isLoading = false;
             state.hasError = false;
         },
-        getArticlesSuccess(action){
+        getArticlesSuccess(state, action){
             state.isLoading = false;
             state.redditArticle = action.payload;
         },
-        getArticlesFailed() {
+        getArticlesFailed(state) {
             state.isLoading = false;
             state.hasError = true;
         },
         setSearchTerm(state, action) {
             state.searchTerm = action.payload;
         },
-        setSubreddit() {
-            state.setSubreddit = action.payload;
+        setSubreddit(state, action) {
+            state.subreddit = action.payload;
             state.searchTerm = "";
         },
 

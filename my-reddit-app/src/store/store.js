@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { redditArticleReducer } from "./redditSlice";
+import redditArticleReducer from "./redditSlice";
 
 //setting up the store to manage global state
 //the reducer controls the state in our slice

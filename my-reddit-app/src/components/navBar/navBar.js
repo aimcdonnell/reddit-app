@@ -16,7 +16,7 @@ const NavBar = () => {
                 <FaSearch id="search-icon"/>
                 {/*onChange - Whenever the user changes the value inside input, take in the event and set the input variable
                  to the value stored inside the input box which is stored inside the search variable*/}
-                <input id="search-bar" placeholder="Type to search..." type="text" className="input" onChange={(e) => setSearch("")} value={""}/>
+                <input id="search-bar" placeholder="Type to search..." type="text" className="input" value={""}/>
             </div>
         </div>
     );
