@@ -1,5 +1,6 @@
 import "./Card.css";
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 //Make all card boxes the same size using CSS
 //Work out why styling is no longer showing
@@ -25,6 +26,10 @@ const Card = () => {
   
   const [posts, setPosts] = useState([]);
   const [subreddit, setSubreddit] = useState("pics");
+
+  const filter = useSelector(
+    (state) => state.postFilter.filter
+);
 
  //the useEffect() hook allows you to perform side effects, e.g. fetch data 
 //every time the subreddit changes, the useEffect hook will recall

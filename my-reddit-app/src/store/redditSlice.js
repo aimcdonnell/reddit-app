@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getSubredditPosts, getSubredditPostComments } from "../components/api/api";
 
 //slice is the feature of your application
 const initialState = {
@@ -30,18 +29,17 @@ const redditArticleSlice = createSlice({
             state.isLoading = false;
             state.hasError = true;
         },
-        setSearchTerm(state, action) {
-            state.searchTerm = action.payload;
+        setFilter(state, action) {
+            state.redditArticle.filter(i => i !== action.payload) 
         },
-        setSubreddit(state, action) {
-            state.subreddit = action.payload;
-            state.searchTerm = "";
-        },
-
+        clearFilter(state, action) {
+            state.searchTerm = ""
+        }
     }
 });
 
 //Displaying the state of the application
 //console.log(articleSlice);
+export const { setFilter } = redditArticleSlice.actions;
 
 export default redditArticleSlice.reducer;

@@ -6,6 +6,6 @@ import redditArticleReducer from "./redditSlice";
 export const store = configureStore({
     //reducer is where you store your state
     reducer: {
-        redditArticle: redditArticleReducer,
+        redditArticle: redditArticleReducer
     },
 })
