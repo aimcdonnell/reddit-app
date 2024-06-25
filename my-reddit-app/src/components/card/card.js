@@ -1,9 +1,9 @@
 import "./Card.css";
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 
 //Make all card boxes the same size using CSS
-//Work out why styling is no longer showing
+//Continue trying to add navbar to app
+
 const Post = ({ post }) => (
     <div className="posts">
         <div id="post-title">
@@ -22,14 +22,16 @@ const Post = ({ post }) => (
     </div>
   )
 
+
 const Card = () => {
   
   const [posts, setPosts] = useState([]);
   const [subreddit, setSubreddit] = useState("pics");
 
-  const filter = useSelector(
+  /*const filter = useSelector(
     (state) => state.redditArticle.searchTerm
-);
+);*/
+
 
  //the useEffect() hook allows you to perform side effects, e.g. fetch data 
 //every time the subreddit changes, the useEffect hook will recall
@@ -57,10 +59,10 @@ const Card = () => {
     })
   }, [subreddit]);
 
-
-
 return (
     // if the posts array (data.data.children) isn't null map through the array and get the article
+
+
     <div className="posts">
         {
             posts.length > 0 ? posts.map((post, index) => <Post key={index} post={post}/>) : "No posts available"
