@@ -28,7 +28,7 @@ const Card = () => {
   const [subreddit, setSubreddit] = useState("pics");
 
   const filter = useSelector(
-    (state) => state.postFilter.filter
+    (state) => state.redditArticle.searchTerm
 );
 
  //the useEffect() hook allows you to perform side effects, e.g. fetch data 

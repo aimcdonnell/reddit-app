@@ -10,7 +10,7 @@ import { setFilter } from "../../store/redditSlice";
 const NavBar = () => {
     //creating the search variable to store the data
     const filter = useSelector(
-        (state) => state.redditArticle.filter
+        (state) => state.redditArticle.searchTerm
     );
 
     const dispatch = useDispatch();
@@ -25,8 +25,14 @@ const NavBar = () => {
                 <FaSearch id="search-icon"/>
                 {/*onChange - Whenever the user changes the value inside input, take in the event and set the input variable
                  to the value stored inside the input box which is stored inside the search variable*/}
-                <input id="search-bar" placeholder="Filter post by name..." type="text" className="input" value={filter} onChange={(e) => 
-                    dispatch(setFilter(e.target.value))}/>
+                <input 
+                    id="search-bar" 
+                    placeholder="Filter post by title..." 
+                    type="text" className="input" 
+                    value={filter} 
+                    onChange={(e) => 
+                    dispatch(setFilter(e.target.value))}
+                    />
             </div>
         </div>
     );

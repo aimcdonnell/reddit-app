@@ -14,25 +14,25 @@ const redditArticleSlice = createSlice({
     name: "redditArticle",
     initialState,
     reducers: {
-        setArticles(state, action) {
+        setArticles: (state, action) => {
             state.redditArticle = action.payload;
         },
-        startGetArticles(state) {
+        startGetArticles: (state) => {
             state.isLoading = false;
             state.hasError = false;
         },
-        getArticlesSuccess(state, action){
+        getArticlesSuccess: (state, action) => {
             state.isLoading = false;
             state.redditArticle = action.payload;
         },
-        getArticlesFailed(state) {
+        getArticlesFailed: (state) => {
             state.isLoading = false;
             state.hasError = true;
         },
-        setFilter(state, action) {
-            state.redditArticle.filter(i => i !== action.payload) 
+        setFilter: (state, action) => {
+            state.searchTerm = action.payload
         },
-        clearFilter(state, action) {
+        clearFilter: (state, action) => {
             state.searchTerm = ""
         }
     }
@@ -40,6 +40,6 @@ const redditArticleSlice = createSlice({
 
 //Displaying the state of the application
 //console.log(articleSlice);
-export const { setFilter } = redditArticleSlice.actions;
+export const { setFilter, clearFilter } = redditArticleSlice.actions;
 
 export default redditArticleSlice.reducer;
