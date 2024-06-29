@@ -26,6 +26,8 @@ const Post = ({ post }) => (
 const Card = () => {
   
   const [posts, setPosts] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [subreddit, setSubreddit] = useState("pics");
 
   /*const filter = useSelector(
@@ -50,25 +52,39 @@ const Card = () => {
 
     //the second .then() returns a second promise that resolves with the result of parsing
     //the response body text as JSON
-        response.json().then(data => {
-            if (data !== null) {
+        response.json()
+            .then(data => {
+                if (data !== null) {
                 //parsing through the Reddit data and setting articles to the array of children
                 setPosts(data.data.children.map((/** @type {{ data: any; }} */ post) => post.data));
             }
         });
     })
+        .catch(err => {
+            console.log(err)
+            setError(err)
+        })
+        .finally(() => {
+            //update the loading state to false regardless of whether we get posts or not
+            setLoading(false)
+        })
   }, [subreddit]);
 
 return (
     // if the posts array (data.data.children) isn't null map through the array and get the article
-
-
+<div>
+    <div className="loading">
+        {loading && <p>Loading...</p>}
+    </div>
+    <div className="error">
+        {error && <p>There was an error loading the posts</p>}
+    </div>
     <div className="posts">
         {
-            posts.length > 0 ? posts.map((post, index) => <Post key={index} post={post}/>) : "No posts available"
+            !loading && !error && posts.length > 0 ? posts.map((post, index) => <Post key={index} post={post}/>) : "No posts available"
         }
     </div>
-    
+</div>   
 )
 }
 

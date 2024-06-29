@@ -1,19 +1,47 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { FaReddit, FaSearch } from "react-icons/fa";
 import "./NavBar.css";
-import { useDispatch, useSelector} from "react-redux";
-import { setFilter } from "../../store/redditSlice";
 
 //Add search functionality to Reddit app
 //Using useState to know what the user has entered
 //and in order to store the input
 const NavBar = () => {
-    //creating the search variable to store the data
-    const filter = useSelector(
-        (state) => state.redditArticle.searchTerm
-    );
-    const dispatch = useDispatch();
 
+//adding state for the API request
+const [apiPosts, setApiPosts] = useState([]);
+//storing the state of the searchItem so that it can be retrieved
+//even after re-renders
+const [searchItem, setSearchItem] = useState('');
+//adding the state to save the filtered items, and setting it to the users variable 
+const [filteredPosts, setFilteredPosts] = useState([]);
+const [subreddit, setSubreddit] = useState("pics");
+
+//fetch the users - useState allows us to fetch the users from the API
+useEffect(() => {
+  fetch(`https://www.reddit.com/r/${subreddit}.json?limit=10`)
+  //save the complete list of users to the new state
+    .then(response => response.json())
+    .then(data => {
+      //update the apiUsers state
+      setApiPosts(data.posts)
+      //update the filteredUsers state
+      setFilteredPosts(data.posts)
+    })
+}, [])
+
+//changing the search term whenever the user changes the text in the input field
+//setting the new search term as the text in the input box
+const handleInputChange = (e) => {
+  const searchTerm = e.target.value;
+  setSearchItem(searchTerm)
+
+//filtering the items depending on what the user is writing
+
+const filteredItems = apiPosts.filter((post) => post.title.toLowerCase().includes(searchTerm.toLowerCase())
+);
+//and set the result to the filtered items state
+setFilteredPosts(filteredItems)
+}
     //implementing filtered state 
     // the search should clear if a post does not have the title we're looking for
     return (
@@ -30,9 +58,8 @@ const NavBar = () => {
                     id="search-bar" 
                     placeholder="Filter post by title..." 
                     type="text" className="input" 
-                    value={filter} 
-                    onChange={(e) => 
-                    dispatch(setFilter(e.target.value))}
+                    value={searchItem} 
+                    onChange={handleInputChange}
                     />
             </div>
         </div>
