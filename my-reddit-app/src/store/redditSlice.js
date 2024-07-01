@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 //slice is the feature of your application
 const initialState = {
-    redditArticle: [],
+    redditArticles: [],
     searchTerm: "",
     subreddit: "r/pics/",
     isLoading: false,
@@ -10,12 +10,15 @@ const initialState = {
 };
 
 //action.payload carries the data necessary to update the application state
+//slices break down the store into parts
+//reducers reduce the state and action into one 
+//payload - whatever you provide to your function to modify the state
 const redditArticleSlice = createSlice({
     name: "redditArticle",
     initialState,
     reducers: {
         setArticles: (state, action) => {
-            state.redditArticle = action.payload;
+            state.redditArticles = action.payload;
         },
         startGetArticles: (state) => {
             state.isLoading = false;
@@ -23,7 +26,7 @@ const redditArticleSlice = createSlice({
         },
         getArticlesSuccess: (state, action) => {
             state.isLoading = false;
-            state.redditArticle = action.payload;
+            state.redditArticles = action.payload;
         },
         getArticlesFailed: (state) => {
             state.isLoading = false;
@@ -40,6 +43,6 @@ const redditArticleSlice = createSlice({
 
 //Displaying the state of the application
 //console.log(articleSlice);
-export const { setFilter, clearFilter } = redditArticleSlice.actions;
+export const { setFilter, clearFilter, setArticles } = redditArticleSlice.actions;
 
 export default redditArticleSlice.reducer;

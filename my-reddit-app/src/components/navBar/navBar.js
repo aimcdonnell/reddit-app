@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from "react";
 import { FaReddit, FaSearch } from "react-icons/fa";
 import "./NavBar.css";
+import { useSelector, useDispatch } from "react-redux";
 
 //Add search functionality to Reddit app
 //Using useState to know what the user has entered
 //and in order to store the input
+//always put use... functions inside your components
 const NavBar = () => {
+  const dispatch = useDispatch()
 
 //adding state for the API request
 const [apiPosts, setApiPosts] = useState([]);
@@ -23,7 +26,8 @@ useEffect(() => {
     .then(response => response.json())
     .then(data => {
       //update the apiUsers state
-      setApiPosts(data.posts)
+      setApiPosts(data.data.children)
+      console.log(data.data.children)
       //update the filteredUsers state
       setFilteredPosts(data.posts)
     })
@@ -36,10 +40,13 @@ const handleInputChange = (e) => {
   setSearchItem(searchTerm)
 
 //filtering the items depending on what the user is writing
-
-const filteredItems = apiPosts.filter((post) => post.title.toLowerCase().includes(searchTerm.toLowerCase())
-);
-//and set the result to the filtered items state
+//post is one element within the apiPosts array
+//if the value is true then filter will return a new array containing the value, otherwise it will not
+//includes returns a boolean value
+//if the filter method returns true it will add the item, if it returns false it will not add the item
+const filteredItems = apiPosts.filter((post) =>  post.data.title.toLowerCase().includes(searchTerm.toLowerCase() ));
+  //and set the result to the filtered items state
+  dispatch((state)=> setArticols)
 setFilteredPosts(filteredItems)
 }
     //implementing filtered state 
