@@ -14,10 +14,11 @@ const initialState = {
 //reducers reduce the state and action into one 
 //payload - whatever you provide to your function to modify the state
 const redditArticleSlice = createSlice({
-    name: "redditArticle",
+    name: "reddit",
     initialState,
     reducers: {
         setArticles: (state, action) => {
+            console.log("hi")
             state.redditArticles = action.payload;
         },
         startGetArticles: (state) => {
