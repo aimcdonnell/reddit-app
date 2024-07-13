@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 const App = () => {
 
-  const posts = useSelector((state) => state.reddit.redditArticles)
+  const posts = useSelector((state) => state.redditArticles)
   console.log(posts)
  
   return (

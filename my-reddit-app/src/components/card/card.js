@@ -56,7 +56,7 @@ const Card = () => {
             .then(data => {
                 if (data !== null) {
                 //parsing through the Reddit data and setting articles to the array of children
-                setPosts(data.data.children.map((/** @type {{ data: any; }} */ post) => post.data));
+                setPosts(data.data.children.map((post) => post.data));
             }
         });
     })
