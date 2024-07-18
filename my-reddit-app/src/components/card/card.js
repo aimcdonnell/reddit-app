@@ -43,31 +43,31 @@ const Card = () => {
     //the promise, triggered by .then() resolves to a response object representing the response to your request
     //promise statuses: pending, fulfilled or rejected
     //the promise only rejects if there is something wrong with the data passed into the fetch, e.g. wrong URL
-    fetch(`https://www.reddit.com/r/${subreddit}.json?limit=10`).then(response => {
-        //if something has gone wrong
-        if (response.status !== 200) {
-            console.log("Unable to fetch data from the server")
-            return;
-        }
+    // fetch(`https://www.reddit.com/r/${subreddit}.json?limit=10`).then(response => {
+    //     //if something has gone wrong
+    //     if (response.status !== 200) {
+    //         console.log("Unable to fetch data from the server")
+    //         return;
+    //     }
 
-    //the second .then() returns a second promise that resolves with the result of parsing
-    //the response body text as JSON
-        response.json()
-            .then(data => {
-                if (data !== null) {
-                //parsing through the Reddit data and setting articles to the array of children
-                setPosts(data.data.children.map((post) => post.data));
-            }
-        });
-    })
-        .catch(err => {
-            console.log(err)
-            setError(err)
-        })
-        .finally(() => {
-            //update the loading state to false regardless of whether we get posts or not
-            setLoading(false)
-        })
+    // //the second .then() returns a second promise that resolves with the result of parsing
+    // //the response body text as JSON
+    //     response.json()
+    //         .then(data => {
+    //             if (data !== null) {
+    //             //parsing through the Reddit data and setting articles to the array of children
+    //             setPosts(data.data.children.map((post) => post.data));
+    //         }
+    //     });
+    // })
+    //     .catch(err => {
+    //         console.log(err)
+    //         setError(err)
+    //     })
+    //     .finally(() => {
+    //         //update the loading state to false regardless of whether we get posts or not
+    //         setLoading(false)
+    //     })
   }, [subreddit]);
 
 return (

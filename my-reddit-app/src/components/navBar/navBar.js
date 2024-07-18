@@ -9,7 +9,9 @@ import { setArticles } from "../../store/redditSlice";
 //and in order to store the input
 //always put use... functions inside your components
 const NavBar = () => {
+  //returns a reference to the dispatch function from the Redux store
   const dispatch = useDispatch()
+  
 
 //adding state for the API request
 const [apiPosts, setApiPosts] = useState([]);
@@ -22,16 +24,16 @@ const [subreddit, setSubreddit] = useState("pics");
 
 //fetch the users - useState allows us to fetch the users from the API
 useEffect(() => {
-  fetch(`https://www.reddit.com/r/${subreddit}.json?limit=10`)
-  //save the complete list of users to the new state
-    .then(response => response.json())
-    .then(data => {
-      //update the apiUsers state
-      setApiPosts(data.data.children)
-      console.log(data.data.children)
-      //update the filteredUsers state
-      setFilteredPosts(data.posts)
-    })
+  // fetch(`https://www.reddit.com/r/${subreddit}.json?limit=10`)
+  // //save the complete list of users to the new state
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     //update the apiUsers state
+  //     setApiPosts(data.data.children)
+  //     console.log(data.data.children)
+  //     //update the filteredUsers state
+  //     setFilteredPosts(data.posts)
+  //   })
 }, [])
 
 //changing the search term whenever the user changes the text in the input field
@@ -51,6 +53,7 @@ const handleInputChange = (e) => {
   //and save filteredItems in your state using the setFilteredPosts function
   
   setFilteredPosts(filteredItems)
+  //dispatching an action
   //tracking the change of state in redux using the setArticles action creator
   dispatch(setArticles(filteredItems))
 }
