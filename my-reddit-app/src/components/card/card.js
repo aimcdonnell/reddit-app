@@ -4,28 +4,32 @@ import React, { useState, useEffect } from "react";
 //Make all card boxes the same size using CSS
 //Continue trying to add navbar to app
 
-const Post = ({ post }) => (
-    <div className="posts">
-        <div id="post-title">
-        <h3>{post.title}</h3>
-        </div>
-        <div id="post-image">
-            { post.post_hint === "image" ? <img src={post.url} alt={post.title}/> : null }
-            { post.is_gallery === true ? <img src={post.thumbnail} alt={post.title}/> : null }
-        </div>
-        <div id="post-text">
-            { post.over_18 ? <p>Image has been blocked as it may be offensive or disturbing to some viewers: Click <a href={post.url}>here</a> to see image</p> : null }
-            { post.selftext ? <p>{post.selftext}</p> : null }
-        </div>
+const Post = ({ singlePost }) => {
+    const post = singlePost.data;
+        console.log("post post", post);
+    return(
+   
+        <div className="posts">
+            <div id="post-title">
+                <h3>{post.title}</h3>
+            </div>
+            <div id="post-image">
+                {post.post_hint === "image" ? <img src={post.url} alt={post.title} /> : null}
+                {post.is_gallery === true ? <img src={post.thumbnail} alt={post.title} /> : null}
+            </div>
+            <div id="post-text">
+                {post.over_18 ? <p>Image has been blocked as it may be offensive or disturbing to some viewers: Click <a href={post.url}>here</a> to see image</p> : null}
+                {post.selftext ? <p>{post.selftext}</p> : null}
+            </div>
 
-        <p>Posted by: {post.author}</p>
-    </div>
-  )
+            <p>Posted by: {post.author}</p>
+        </div>
+    )
+}
 
 
-const Card = () => {
-  
-  const [posts, setPosts] = useState([]);
+const Card = ({posts,status}) => {
+//   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [subreddit, setSubreddit] = useState("pics");
@@ -74,14 +78,14 @@ return (
     // if the posts array (data.data.children) isn't null map through the array and get the article
 <div>
     <div className="loading">
-        {loading && <p>Loading...</p>}
+        {status?.loading && <p>Loading...</p>}
     </div>
-    <div className="error">
+    {/* <div className="error">
         {error && <p>There was an error loading the posts</p>}
-    </div>
+    </div> */}
     <div className="posts">
-        {
-            !loading && !error && posts.length > 0 ? posts.map((post, index) => <Post key={index} post={post}/>) : "No posts available"
+    {
+            posts.length > 0 ? posts.map((post, index) => <Post key={index} singlePost={post}/>) : "No posts available"
         }
     </div>
 </div>   

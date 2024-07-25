@@ -2,19 +2,26 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar";
 import Card from "./components/Card/Card";
-import { useSelector } from "react-redux";
-import { getPosts, fetchPosts } from "./store/redditSlice";
+import { getPosts, fetchPosts, getPostsStatus } from "./store/redditSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 
 const App = () => {
-
+  const dispatch= useDispatch()
   const posts = useSelector(getPosts)
+  const status = useSelector(getPostsStatus)
+console.log(status)
   console.log(posts)
 
   //before mounting (constructing the DOM structure), the DOM calls the useEffect() hook below
-  useEffect(() =>
-   fetchPosts()
-    , [])
+  useEffect(() => {
+    
+    if (status === "idle") {
+      console.log("useEffect")
+    dispatch(fetchPosts())
+    }
+  
+  }, [status, dispatch])
  
   return (
     <div className="app">
@@ -25,8 +32,8 @@ const App = () => {
       </header>
       <div>
 
-        {/* {posts.map((post, index) => <Card key={index} post={post} />)} 
-         <Card post={post} /> */}
+        {/* {posts.map((post, index) => <Card key={index} status={status} post={post} />)}  */}
+         <Card posts={posts} />
       </div>
     </div>
   );
