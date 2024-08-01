@@ -1,5 +1,9 @@
 import "./Card.css";
+//the curly braces aren't required when you use "export default", only when you use "export"
+import Comments from "../Comments/Comments";
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getComments, getCommentsStatus, fetchComments } from "../../store/commentsSlice";
 
 //Make all card boxes the same size using CSS
 //Continue trying to add navbar to app
@@ -33,6 +37,9 @@ const Card = ({posts,status}) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [subreddit, setSubreddit] = useState("pics");
+  const dispatch = useDispatch()
+  const comments = useSelector(getComments)
+  const commentStatus = useSelector(getCommentsStatus)
 
   /*const filter = useSelector(
     (state) => state.redditArticle.searchTerm
@@ -42,7 +49,10 @@ const Card = ({posts,status}) => {
  //the useEffect() hook allows you to perform side effects, e.g. fetch data 
 //every time the subreddit changes, the useEffect hook will recall
   useEffect(() => {
-      
+    if (commentStatus === "idle") {
+        console.log("useEffect")
+      dispatch(fetchComments())
+      }
     //the first .then() waits for the response
     //the promise, triggered by .then() resolves to a response object representing the response to your request
     //promise statuses: pending, fulfilled or rejected
@@ -72,7 +82,7 @@ const Card = ({posts,status}) => {
     //         //update the loading state to false regardless of whether we get posts or not
     //         setLoading(false)
     //     })
-  }, [subreddit]);
+  }, [status, dispatch]);
 
 return (
     // if the posts array (data.data.children) isn't null map through the array and get the article
@@ -86,7 +96,8 @@ return (
     <div className="posts">
     {
             posts.length > 0 ? posts.map((post, index) => <Post key={index} singlePost={post}/>) : "No posts available"
-        }
+            }
+        <Comments comments={comments}/>    
     </div>
 </div>   
 )
