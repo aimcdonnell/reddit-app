@@ -8,7 +8,7 @@ export const fetchComments = createAsyncThunk(
         try { 
             const url = "https://www.reddit.com/r/pics/comments.json"
             const result = await axios(url)
-            const data = result.data
+            const data = result.data//result.data reflects all the comment data coming from the link above
             const comments = data.data.children
             console.log("comments", comments)
             return comments

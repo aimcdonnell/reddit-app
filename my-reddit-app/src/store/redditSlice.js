@@ -1,17 +1,20 @@
-
-//Add axios to this slice
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const fetchPosts = createAsyncThunk(
     'reddit/fetchPosts',
     async (thunkAPI) => {
-        const url = "https://www.reddit.com/r/pics.json?limit=10"
-        const result = await fetch(url)
-        const data = await result.json()//result.json() reflects all the data in the .json file
-        const posts = data.data.children
-        console.log("posts",posts)
-        return posts
-
+        try {
+            const url = "https://www.reddit.com/r/pics?limit=10"
+            const result = await axios(url)
+            const data = await result.data//result.data reflects all the post data coming from the link above
+            const posts = data.data.children
+            console.log("posts",posts)
+            return posts
+        }
+        catch (error) {
+            console.log(error)
+        }
     },
 )
 
