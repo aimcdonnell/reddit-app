@@ -42,7 +42,7 @@ const redditCommentsSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchComments.pending, (state, action) => {
+            .addCase(fetchComments.pending, (state) => {
                 state.status = "loading"
 
                 // action is inferred correctly here if using TS
@@ -51,10 +51,7 @@ const redditCommentsSlice = createSlice({
             .addCase(fetchComments.fulfilled, (state, action) => {
                 state.status = "succeeded"
                
-                state.redditComments = action.payload.map((comment) => 
-           
-                   comment
-                )
+                state.redditComments = action.payload.map((comment) => comment)
 
                 // action is inferred correctly here if using TS
             })

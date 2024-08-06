@@ -5,7 +5,7 @@ export const fetchPosts = createAsyncThunk(
     'reddit/fetchPosts',
     async (thunkAPI) => {
         try {
-            const url = "https://www.reddit.com/r/pics?limit=10"
+            const url = "https://www.reddit.com/r/pics.json?limit=10"
             const result = await axios(url)
             const data = await result.data//result.data reflects all the post data coming from the link above
             const posts = data.data.children
