@@ -39,6 +39,7 @@ const redditCommentsSlice = createSlice({
     name: "comments",
     initialState,
     reducers: {
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchComments.pending, (state, action) => {
@@ -49,7 +50,11 @@ const redditCommentsSlice = createSlice({
             
             .addCase(fetchComments.fulfilled, (state, action) => {
                 state.status = "succeeded"
-                state.comments = action.payload.map((comment)=> comment)
+               
+                state.redditComments = action.payload.map((comment) => 
+           
+                   comment
+                )
 
                 // action is inferred correctly here if using TS
             })
@@ -59,14 +64,13 @@ const redditCommentsSlice = createSlice({
                 state.status = "failed"
                 state.error = action.error.message
             })
-        },
-    }
+        }
 
 });
 
 
 export const getComments = (state) => state.comments.redditComments
-export const getCommentsStatus = (state) => state.reddit.status
+export const getCommentsStatus = (state) => state.comments.status
 
 //Displaying the state of the application
 //console.log(articleSlice);

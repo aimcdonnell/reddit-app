@@ -10,7 +10,6 @@ import { getComments, getCommentsStatus, fetchComments } from "../../store/comme
 
 const Post = ({ singlePost }) => {
     const post = singlePost.data;
-        console.log("post post", post);
     return(
    
         <div className="posts">
@@ -25,8 +24,6 @@ const Post = ({ singlePost }) => {
                 {post.over_18 ? <p>Image has been blocked as it may be offensive or disturbing to some viewers: Click <a href={post.url}>here</a> to see image</p> : null}
                 {post.selftext ? <p>{post.selftext}</p> : null}
             </div>
-
-            <p>Posted by: {post.author}</p>
         </div>
     )
 }
@@ -36,7 +33,8 @@ const Card = ({posts,status}) => {
 //   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [subreddit, setSubreddit] = useState("pics");
+    const [subreddit, setSubreddit] = useState("pics");
+    const [commentsIdle, setCommentsIdle]= useState([])
   const dispatch = useDispatch()
   const comments = useSelector(getComments)
   const commentStatus = useSelector(getCommentsStatus)
@@ -44,14 +42,17 @@ const Card = ({posts,status}) => {
   /*const filter = useSelector(
     (state) => state.redditArticle.searchTerm
 );*/
-
+// console.log(commentStatus)
 
  //the useEffect() hook allows you to perform side effects, e.g. fetch data 
 //every time the subreddit changes, the useEffect hook will recall
   useEffect(() => {
     if (commentStatus === "idle") {
-        console.log("useEffect")
-      dispatch(fetchComments())
+        console.log("idle card")
+        dispatch(fetchComments())
+        // setCommentsIdle(comments)
+        // console.log(commentsIdle)
+        console.log("commments card", comments)
       }
     //the first .then() waits for the response
     //the promise, triggered by .then() resolves to a response object representing the response to your request
