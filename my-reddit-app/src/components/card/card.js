@@ -99,18 +99,18 @@ return (
                 posts.length > 0 ? posts.map((post, index) => {
 
 
-                    const commentPost = comments.filter(comment => {
+                    const postComment = comments.filter(comment => {
                         
-                        console.log("comente title",comment.data.link_title)
+                        console.log("comment title",comment.data.link_title)
                         console.log("post title", post.data.title)
                         return comment.data.link_title !== post.title
                     })
-                    console.log("comment card",commentPost)
+                    console.log("comment card", postComment)
                     return(
                     <div>
                         <Post key={index} singlePost={post} />
                         
-                    <Comment comment={commentPost}/>
+                    <Comment comment={postComment}/>
                         </div>)
                 }) : ("No posts available")
                      }
