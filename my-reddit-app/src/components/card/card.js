@@ -1,6 +1,6 @@
 import "./Card.css";
 //the curly braces aren't required when you use "export default", only when you use "export"
-import Comments from "../Comments/Comments";
+import Comment from "../Comments/Comment";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getComments, getCommentsStatus, fetchComments } from "../../store/commentsSlice";
@@ -96,9 +96,25 @@ return (
     </div> */}
     <div className="posts">
     {
-            posts.length > 0 ? posts.map((post, index) => <Post key={index} singlePost={post}/>) : "No posts available"
-            }
-        <Comments comments={comments}/>    
+                posts.length > 0 ? posts.map((post, index) => {
+
+
+                    const commentPost = comments.filter(comment => {
+                        
+                        console.log("comente title",comment.data.link_title)
+                        console.log("post title", post.data.title)
+                        return comment.data.link_title !== post.title
+                    })
+                    console.log("comment card",commentPost)
+                    return(
+                    <div>
+                        <Post key={index} singlePost={post} />
+                        
+                    <Comment comment={commentPost}/>
+                        </div>)
+                }) : ("No posts available")
+                     }
+        {/*<Comments comments={comments}/>*/}    
     </div>
 </div>   
 )

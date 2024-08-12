@@ -1,18 +1,18 @@
-import React from 'react'
+/*import React from 'react'
 
-function Comments({comments}) {
+function Comments({comment}) {
   return (
     <div>
       {
-        comments.map(comment => <div key={comment.data.id}>
+        <div>
 
           <h3>{comment.data.author}</h3>
           <h3>{comment.data.body}</h3>
           <h3>{comment.data.created}</h3>
-        </div> )
+        </div> 
       }
     </div>
   )
 }
 
-export default Comments
+export default Comments*/
