@@ -3,6 +3,7 @@ import { FaReddit, FaSearch } from "react-icons/fa";
 import "./NavBar.css";
 import { useSelector, useDispatch } from "react-redux";
 import { setArticles } from "../../store/redditSlice";
+import { setFilter, clearFilter } from "../../store/redditSlice";
 
 //Add search functionality to Reddit app
 //Using useState to know what the user has entered
@@ -42,14 +43,13 @@ const handleInputChange = (e) => {
   const searchTerm = e.target.value;
   //you need to use the setSearchItem function to save the search term
   setSearchItem(searchTerm)
- 
+ dispatch(setFilter(searchTerm))
   //CONTINUE ADDING FILTERING TO NAV BAR
 //filtering the items depending on what the user is writing
 //post is one element within the apiPosts array
 //if the value is true then filter will return a new array containing the value, otherwise it will not
 //includes returns a boolean value
 //if the filter method returns true it will add the item, if it returns false it will not add the item
-  const filteredItems = apiPosts.filter((post) => post.data.title.toLowerCase().includes(searchTerm.toLowerCase()));
   //and save filteredItems in your state using the setFilteredPosts function
   
   setFilteredPosts(filteredItems)

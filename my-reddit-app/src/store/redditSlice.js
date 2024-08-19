@@ -53,12 +53,12 @@ const redditArticleSlice = createSlice({
         //     state.isLoading = false;
         //     state.hasError = true;
         // },
-        // setFilter: (state, action) => {
-        //     state.searchTerm = action.payload
-        // },
-        // clearFilter: (state, action) => {
-        //     state.searchTerm = ""
-        // }
+        setFilter: (state, action) => {
+            state.searchTerm = action.payload
+        },
+        clearFilter: (state, action) => {
+            state.searchTerm = ""
+        }
     },
     //used in relation to createAsyncThunk
     extraReducers: (builder) => {
@@ -89,9 +89,10 @@ const redditArticleSlice = createSlice({
 
 export const getPosts = (state) => state.reddit.redditArticles
 export const getPostsStatus = (state) => state.reddit.status
+export const getSearchTerm = (state) => state.reddit.searchTerm
 
 //Displaying the state of the application
 //console.log(articleSlice);
-export const { setArticles } = redditArticleSlice.actions;
+export const { setArticles, setFilter, clearFilter } = redditArticleSlice.actions;
 
 export default redditArticleSlice.reducer;

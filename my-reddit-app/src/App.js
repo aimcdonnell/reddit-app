@@ -10,6 +10,7 @@ const App = () => {
   const dispatch= useDispatch()
   const posts = useSelector(getPosts)
   const status = useSelector(getPostsStatus)
+  
 console.log(status)
   console.log(posts)
 

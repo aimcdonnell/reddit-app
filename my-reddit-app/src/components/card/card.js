@@ -4,6 +4,7 @@ import Comment from "../Comments/Comment";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getComments, getCommentsStatus, fetchComments } from "../../store/commentsSlice";
+import { setFilter, clearFilter, getSearchTerm } from "../../store/redditSlice";
 
 //Make all card boxes the same size using CSS
 //Continue trying to add navbar to app
@@ -29,8 +30,8 @@ const Post = ({ singlePost }) => {
 }
 
 
-const Card = ({posts,status}) => {
-//   const [posts, setPosts] = useState([]);
+const Card = ({ posts, status }) => {
+
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
     const [subreddit, setSubreddit] = useState("pics");
@@ -38,10 +39,12 @@ const Card = ({posts,status}) => {
   const dispatch = useDispatch()
   const comments = useSelector(getComments)
   const commentStatus = useSelector(getCommentsStatus)
+    const searchTerm = useSelector(getSearchTerm)
+    const filteredItems = posts.filter((post) => post.data.title.toLowerCase().includes(searchTerm.toLowerCase()));
 
-  /*const filter = useSelector(
-    (state) => state.redditArticle.searchTerm
-);*/
+//   const filter = useSelector(
+//     (state) => state.redditArticle.searchTerm
+// );
 // console.log(commentStatus)
 
  //the useEffect() hook allows you to perform side effects, e.g. fetch data 
@@ -101,16 +104,16 @@ return (
 
                     const postComment = comments.filter(comment => {
                         
-                        console.log("comment title",comment.data.link_title)
-                        console.log("post title", post.data.title)
-                        return comment.data.link_title !== post.title
+                        console.log("comment title:", comment.data.link_title)
+                        console.log("post title:", post.data.title)
+                        return comment.data.link_title === post.data.title
                     })
-                    console.log("comment card", postComment)
+                    console.log("comment card:", postComment)
                     return(
                     <div>
                         <Post key={index} singlePost={post} />
                         
-                    <Comment comment={postComment}/>
+                    <Comment comments={postComment}/>
                         </div>)
                 }) : ("No posts available")
                      }

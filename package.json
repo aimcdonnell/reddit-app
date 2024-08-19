@@ -2,6 +2,9 @@
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@reduxjs/toolkit": "^2.2.5",
+    "date": "^2.0.5",
+    "date-fns": "^3.6.0",
+    "fns": "^1.0.0",
     "react-icons": "^5.2.1"
   }
 }
