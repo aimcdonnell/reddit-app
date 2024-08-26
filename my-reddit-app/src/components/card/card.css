@@ -1,9 +1,10 @@
 .posts {
     padding: 3rem 3rem;
-    margin: 0 auto;
+    margin: 1rem auto;
     width: 75%;
     box-shadow: .125rem .15rem .125rem .15rem rgb(189, 188, 188);
     font-family: "Reddit Sans", sans-serif;
+    border-radius: 1rem;
 }
 
 #post-title h3 {

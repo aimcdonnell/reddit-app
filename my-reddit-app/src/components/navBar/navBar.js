@@ -52,10 +52,10 @@ const handleInputChange = (e) => {
 //if the filter method returns true it will add the item, if it returns false it will not add the item
   //and save filteredItems in your state using the setFilteredPosts function
   
-  setFilteredPosts(filteredItems)
+  //setFilteredPosts(filteredItems)
   //dispatching an action
   //tracking the change of state in redux using the setArticles action creator
-  dispatch(setArticles(filteredItems))
+  //dispatch(setArticles(filteredItems))
 }
     //implementing filtered state 
     // the search should clear if a post does not have the title we're looking for

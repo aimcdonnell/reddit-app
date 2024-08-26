@@ -1,4 +1,32 @@
 .comment-wrapper {
-    border: solid 1px rgb(0, 0, 0);
-    padding: 10px;
+    border: solid 1px rgb(173, 170, 170);
+    padding: 15px;
+    width: 100%;
+    max-width: 650px;
+    min-height: 150px;
+    margin: 10px auto;
+    border-radius: .5rem;
+    overflow: hidden;
+
 }
+
+.comment-wrapper h3 {
+    margin: 5px 0;
+    font-size: 14px;
+    word-wrap: break-word;
+  }
+
+  .comment-wrapper h3:first-child {
+    font-weight: bold;
+    color: #1a1a1b;
+  }
+  
+  .comment-wrapper h3:nth-child(2) {
+    font-weight: normal;
+    color: #1c1c1c;
+  }
+
+  .comment-wrapper h3:last-child {
+    font-size: 12px;
+    color: #7c7c7c;
+  }
