@@ -1,17 +1,16 @@
 .comment-wrapper {
-    border: solid 1px rgb(173, 170, 170);
-    padding: 15px;
-    width: 100%;
-    max-width: 650px;
-    min-height: 150px;
-    margin: 10px auto;
-    border-radius: .5rem;
-    overflow: hidden;
-
-}
+    width: 650px;
+    height: 200px;
+    overflow-y: auto;
+    margin: 5px auto;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 
 .comment-wrapper h3 {
-    margin: 5px 0;
+    margin: 2px 0;
     font-size: 14px;
     word-wrap: break-word;
   }
