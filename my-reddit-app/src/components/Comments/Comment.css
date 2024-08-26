@@ -1,16 +1,15 @@
 .comment-wrapper {
-    width: 650px;
-    height: 200px;
+    width: 535px;
+    height: 150px;
     overflow-y: auto;
     margin: 5px auto;
-    padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
 .comment-wrapper h3 {
-    margin: 2px 0;
+    margin: px 0;
     font-size: 14px;
     word-wrap: break-word;
   }
