@@ -25,8 +25,6 @@ const initialState = {
     searchTerm: "",
     subreddit: "r/pics/",
     error: ""
-    /*isLoading: false,
-    hasError: false,*/
 };
 
 //action.payload carries the data necessary to update the application state
@@ -41,22 +39,10 @@ const redditArticleSlice = createSlice({
             console.log("hi")
             state.redditArticles = action.payload;
         },
-        // startGetArticles: (state) => {
-        //     state.isLoading = false;
-        //     state.hasError = false;
-        // },
-        // getArticlesSuccess: (state, action) => {
-        //     state.isLoading = false;
-        //     state.redditArticles = action.payload;
-        // },
-        // getArticlesFailed: (state) => {
-        //     state.isLoading = false;
-        //     state.hasError = true;
-        // },
         setFilter: (state, action) => {
             state.searchTerm = action.payload
         },
-        clearFilter: (state, action) => {
+        clearFilter: (state) => {
             state.searchTerm = ""
         }
     },
@@ -65,21 +51,17 @@ const redditArticleSlice = createSlice({
         builder
             .addCase(fetchPosts.pending, (state, action) => {
                 state.status = "loading"
-
-                // action is inferred correctly here if using TS
             })
             
             .addCase(fetchPosts.fulfilled, (state, action) => {
                 state.status = "succeeded"
                 state.redditArticles = action.payload.map((post)=> post)
 
-                // action is inferred correctly here if using TS
             })
             // You can chain calls, or have separate `builder.addCase()` lines each time
             
             .addCase(fetchPosts.rejected, (state, action) => {
                 state.status = "failed"
-                // state.error = action.error.message
             })
         },
 

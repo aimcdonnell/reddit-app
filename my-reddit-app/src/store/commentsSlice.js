@@ -8,7 +8,7 @@ export const fetchComments = createAsyncThunk(
         try { 
             const url = "https://www.reddit.com/r/pics/comments.json"
             const result = await axios(url)
-            const data = result.data//result.data reflects all the comment data coming from the link above
+            const data = result.data//result.data reflects all the comment data coming from the reddit json link above
             const comments = data.data.children
             console.log("commentSlice.js comments", comments)
             return comments
@@ -27,8 +27,6 @@ const initialState = {
     redditComments: [],
     status: "idle",
     error: ""
-    /*isLoading: false,
-    hasError: false,*/
 };
 
 //action.payload carries the data necessary to update the application state
@@ -45,7 +43,6 @@ const redditCommentsSlice = createSlice({
             .addCase(fetchComments.pending, (state) => {
                 state.status = "loading"
 
-                // action is inferred correctly here if using TS
             })
             
             .addCase(fetchComments.fulfilled, (state, action) => {
@@ -53,7 +50,6 @@ const redditCommentsSlice = createSlice({
                
                 state.redditComments = action.payload.map((comment) => comment)
 
-                // action is inferred correctly here if using TS
             })
             // You can chain calls, or have separate `builder.addCase()` lines each time
             
